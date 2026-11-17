@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>José Miguel Medina — Portafolio</title>
+<style>
+:root{color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{color-scheme:dark}
+:root[data-theme="light"]{color-scheme:light}
+html{height:100%}
+body[data-room="hall"]{--wall:light-dark(#e9e6e0,#2a2926);--wall2:light-dark(#dedad2,#232220);--ink:light-dark(#23211e,#ece8e1);--muted:light-dark(#6f6a62,#9a948a);--paper:light-dark(#fbfaf7,#3a3835);--floor:light-dark(#b59a7c,#4a3d30);--acc:light-dark(#b5583a,#d9805f);--font:"Helvetica Neue",Helvetica,Arial,sans-serif}
+body[data-room="arq"]{--wall:light-dark(#b9b7b1,#35352f);--wall2:light-dark(#a9a7a0,#2b2b27);--ink:light-dark(#1b1b1a,#ecebe6);--muted:light-dark(#55534e,#a3a198);--paper:light-dark(#efede8,#444440);--floor:light-dark(#6e6c66,#3a3a37);--acc:#e0602f;--font:ui-monospace,"Courier New",monospace}
+body[data-room="int"]{--wall:light-dark(#ecd2b3,#4a3626);--wall2:light-dark(#e2c29b,#3d2c1f);--ink:light-dark(#3b2a1c,#f2e6d6);--muted:light-dark(#7a6048,#c2a98c);--paper:light-dark(#fff8ee,#5a4332);--floor:light-dark(#a8743f,#5d3f24);--acc:light-dark(#c0623a,#e48a5f);--font:Georgia,"Times New Roman",serif}
+body[data-room="art"]{--wall:light-dark(#f4f2ee,#2c2c2c);--wall2:light-dark(#e9e6df,#262626);--ink:light-dark(#222,#eee);--muted:light-dark(#777,#aaa);--paper:light-dark(#fff,#3a3a3a);--floor:light-dark(#9a9791,#444);--acc:#d94f7a;--font:"Helvetica Neue",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;display:flex;flex-direction:column;background:linear-gradient(var(--wall),var(--wall2));color:var(--ink);font-family:var(--font);transition:background .5s}
+body[data-room="arq"]{background:repeating-linear-gradient(0deg,transparent 0 138px,rgba(0,0,0,.12) 138px 140px),linear-gradient(var(--wall),var(--wall2))}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;background:radial-gradient(circle 300px at var(--mx,50%) var(--my,25%),rgba(255,240,200,.18),transparent 70%)}
+button{font:inherit;color:inherit;cursor:pointer}
+.rail{height:6px;background:linear-gradient(#c9ccd1,#8a8f96);box-shadow:0 2px 4px rgba(0,0,0,.3)}
+body[data-room="int"] .rail,body[data-room="art"] .rail{display:none}
+.view{flex:1;display:flex;flex-direction:column}
+[hidden]{display:none!important}
+/* hall */
+.hall{justify-content:center;align-items:center;padding:30px 6vw;text-align:center;gap:34px}
+.vinyl{margin:0;font-size:clamp(38px,9vw,92px);font-weight:300;letter-spacing:.03em;line-height:1}
+.vinyl b{font-weight:800;display:block}
+.tag{margin:10px 0 0;color:var(--muted);font-size:14px;letter-spacing:.16em;text-transform:uppercase}
+.doors{display:flex;gap:26px;flex-wrap:wrap;justify-content:center}
+.door{position:relative;width:150px;height:230px;background:var(--paper);border:2px solid var(--ink);border-radius:75px 75px 0 0;display:flex;align-items:flex-end;justify-content:center;padding:0 8px 16px;box-shadow:0 14px 20px -10px rgba(0,0,0,.4);text-align:center;font-size:13px;line-height:1.3}
+.door::before{content:"";position:absolute;right:18px;top:55%;width:9px;height:9px;border-radius:50%;background:var(--acc)}
+.door:hover,.door:focus-visible{outline:3px solid var(--acc);outline-offset:5px}
+.door strong{display:block;font-size:15px}.door span{color:var(--muted)}
+/* room */
+.bar{display:flex;align-items:center;gap:14px;padding:14px 5vw;position:relative;z-index:6}
+.bar h2{margin:0;font-size:20px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;flex:1}
+.bar button{background:none;border:1px solid var(--ink);padding:6px 12px;border-radius:2px;opacity:.85}
+.bar button:hover{border-color:var(--acc);color:var(--acc)}
+.bar button:disabled{opacity:.25;cursor:default}
+.pager{display:flex;align-items:center;gap:8px;font-size:13px}
+#wall{position:relative;flex:1;height:calc(100dvh - 250px);min-height:400px}
+.panel{position:absolute;z-index:2;cursor:pointer;border:6px solid var(--paper);background:var(--paper);box-shadow:8px 8px 0 rgba(0,0,0,.22);animation:pin .6s both}
+.panel:hover,.panel:focus-visible{outline:2px solid var(--acc);outline-offset:5px}
+.panel .art{width:100%;height:100%;position:relative;overflow:hidden}
+.lab{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 8px;font-size:11px;line-height:1.25;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.65));text-align:left}
+.lab em{display:block;font-style:normal;opacity:.8;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.clip{position:absolute;left:50%;top:-14px;width:50px;height:14px;transform:translateX(-50%);background:linear-gradient(#c9ccd1,#8a8f96);border-radius:2px;box-shadow:0 2px 3px rgba(0,0,0,.35);z-index:3}
+.clip::before,.clip::after{content:"";position:absolute;top:4px;width:5px;height:5px;border-radius:50%;background:#6c7077}
+.clip::before{left:7px}.clip::after{right:7px}
+body[data-room="int"] .panel{border:9px solid light-dark(#b8814a,#8a5d36);border-radius:4px;box-shadow:0 12px 18px -8px rgba(0,0,0,.4)}
+body[data-room="int"] .clip{width:12px;height:12px;top:-8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f1d29a,#9a6b2e)}
+body[data-room="int"] .clip::before,body[data-room="int"] .clip::after{display:none}
+body[data-room="art"] .panel{border:8px solid #fff;box-shadow:0 8px 14px -6px rgba(0,0,0,.35);transform:rotate(var(--r,0deg))}
+body[data-room="art"] .clip{width:64px;height:20px;top:-11px;border-radius:0;background:rgba(236,224,170,.85);box-shadow:none;transform:translateX(-50%) rotate(-3deg)}
+body[data-room="art"] .clip::before,body[data-room="art"] .clip::after{display:none}
+.panel.out{transition:transform .75s cubic-bezier(.5,0,1,.6),opacity .75s;transform:translate(var(--dx),-8vh) rotate(var(--rot));opacity:0;animation:none}
+@keyframes pin{from{opacity:0;transform:scale(.94) rotate(var(--r,0deg))}to{opacity:1;transform:scale(1) rotate(var(--r,0deg))}}
+/* zoom + sheet */
+.zoom{position:fixed;z-index:50;overflow:hidden;transition:left .55s cubic-bezier(.7,0,.2,1),top .55s cubic-bezier(.7,0,.2,1),width .55s cubic-bezier(.7,0,.2,1),height .55s cubic-bezier(.7,0,.2,1)}
+.zoom.go{left:0!important;top:0!important;width:100vw!important;height:100dvh!important}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:55%;overflow:auto;background:var(--paper);color:var(--ink);padding:24px 6vw calc(24px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:1.4fr 1fr;gap:20px 40px;opacity:0;transform:translateY(24px);transition:opacity .4s,transform .4s}
+.sheet.on{opacity:1;transform:none}
+.sheet h3{margin:4px 0 8px;font-size:clamp(22px,4vw,34px);font-weight:600}
+.sheet em{font-style:normal;color:var(--acc);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.sheet p{margin:0;line-height:1.55}
+.sheet dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px}
+.sheet dt{color:var(--muted)}.sheet dd{margin:0}
+.x{position:absolute;right:5vw;top:14px;background:var(--paper);border:1px solid var(--ink);padding:6px 12px}
+@media (max-width:640px){.sheet{grid-template-columns:1fr}}
+/* footer */
+footer{position:relative;z-index:3;margin-top:auto}
+.plq{margin:0 5vw 22px;padding:12px 16px;background:var(--paper);box-shadow:0 6px 12px -6px rgba(0,0,0,.4);display:flex;flex-wrap:wrap;gap:6px 22px;font-size:12px;color:var(--muted);width:fit-content;max-width:90vw}
+.plq b{color:var(--ink);font-weight:600}.plq a{color:var(--acc)}
+.base{height:22px;background:light-dark(#f4f2ee,#34322f);box-shadow:0 -2px 6px rgba(0,0,0,.25)}
+.floor{height:50px;background:repeating-linear-gradient(90deg,transparent 0 118px,rgba(0,0,0,.2) 118px 120px),var(--floor);box-shadow:inset 0 12px 16px -8px rgba(0,0,0,.4)}
+</style>
+</head>
+<body data-room="hall">
+<div class="rail"></div>
+<section id="hall" class="view hall">
+  <div><h1 class="vinyl">José Miguel<b>Medina</b></h1><p class="tag">Arquitectura · Interiores · Arte</p></div>
+  <div class="doors" id="doors"></div>
+</section>
+<section id="room" class="view" hidden>
+  <div class="bar"><button id="back">← Entrada</button><h2 id="rt"></h2>
+    <div class="pager"><button id="prev" aria-label="Anterior">‹</button><span id="pg"></span><button id="next" aria-label="Siguiente">›</button></div></div>
+  <div id="wall"></div>
+</section>
+<footer>
+  <div class="plq"><b>José Miguel Medina Quequesana</b><span>Lima, Perú</span><a href="mailto:joselommq22@gmail.com">joselommq22@gmail.com</a><a href="tel:+51982132682">+51 982 132 682</a><span><a href="#">Portafolio</a> · <a href="#">LinkedIn</a> · <a href="#">Instagram</a> · <a href="#">Behance</a></span></div>
+  <div class="base"></div><div class="floor"></div>
+</footer>
+<script>
+const $=s=>document.querySelector(s),wall=$('#wall');
+const pal=['linear-gradient(135deg,#c9b8a3 0 50%,#a86a52 50%)','repeating-linear-gradient(90deg,#9fb1b8 0 14px,#b9c7cc 14px 28px)','radial-gradient(circle at 70% 35%,#e9c46a 0 18%,transparent 19%),linear-gradient(#7f8f7a,#4f6150)','linear-gradient(160deg,#2f3a40 0 55%,#d8cfc0 55%)','conic-gradient(from 200deg at 30% 80%,#b5583a,#e8d9c4,#3d4a52,#b5583a)','linear-gradient(90deg,#d8d2c6 0 48%,#23211e 48% 52%,#d8d2c6 52%)','radial-gradient(circle at 30% 70%,#e8a87c 0 25%,transparent 26%),linear-gradient(#5b6b8c,#2f3a55)','linear-gradient(45deg,#e9dcc6 25%,#cdb99a 25% 50%,#e9dcc6 50% 75%,#cdb99a 75%)'];
+const P=(t,tag,y,ar,d)=>({t,tag,y,ar,d});
+const rooms={
+ arquitectura:{n:'Arquitectura',k:'arq',items:[
+  P('Supermanzana Chorrillos','Urbano','2026',.8,'Propuesta de supermanzana: menos tráfico y más calle para la gente. Incluye mapeo de actores y entrevistas a vecinos.'),
+  P('Áreas verdes y Gehl','Análisis urbano','2026',1.5,'Análisis grupal de áreas verdes desde la mirada de Jan Gehl, presentado en siete láminas.'),
+  P('Aves en la arquitectura','Infografía','2026',1,'Cinco casos, de Edfu al Oculus, donde las aves inspiran la forma construida.'),
+  P('Planta y corte','Dibujo técnico','2025',1.33,'Documentación de proyecto con plantas, cortes y elevaciones.'),
+  P('Mapeo de actores','Gestión urbana','2026',1.25,'Quién decide, quién se ve afectado y quién puede aliarse en un proyecto urbano.'),
+  P('Pritzker en tabla','Investigación','2026',.75,'Cuadro de laureados del Pritzker con dos obras por arquitecto.'),
+  P('Ciudades amigables con la niñez','Curso UPC','2026',1.6,'Diseño urbano pensado desde la escala y las necesidades de la infancia.'),
+  P('Proyecto de tesis','Tesis','2027',.7,'En desarrollo. Aquí irá la presentación del proyecto final.')]},
+ interiores:{n:'Interiores',k:'int',items:[
+  P('Vivienda residencial','Interiores','2024',1.4,'Proyecto del diplomado MALI: distribución, materiales y luz para una vivienda.'),
+  P('Sala y comedor','Interiores','2024',1.1,'Espacios sociales pensados para conversar y recibir.'),
+  P('Dormitorio principal','Interiores','2024',.8,'Un refugio tranquilo con luz cálida y texturas suaves.'),
+  P('Cocina abierta','Interiores','2024',1.3,'Cocina integrada, con materiales resistentes y fáciles de limpiar.')]},
+ arte:{n:'Arte',k:'art',items:[
+  P('Fillet crochet','Patrón','2026',1,'Herramienta que convierte una imagen en patrón de crochet fillet, fila por fila.'),
+  P('Arte moderno y contemporáneo','Estudio MoMA','2022',.8,'Especialización sobre arte y diseño moderno y contemporáneo.'),
+  P('Historia del arte','Estudio','2023',1.3,'Curso de historia del arte de la Universidad de Palermo.'),
+  P('Cuaderno de bocetos','Dibujo','2026',1.2,'Bocetos y estudios a mano.')]}
+};
+let cur,page=0,busy=0;
+const pp=()=>innerWidth<600?4:6,pages=()=>Math.ceil(rooms[cur].items.length/pp());
+$('#doors').innerHTML=Object.entries(rooms).map(([k,r],i)=>`<button class="door" data-k="${k}"><div><strong>Sala ${'I'.repeat(i+1)}</strong>${r.n}<br><span>${r.items.length} proyectos</span></div></button>`).join('');
+function split(items,r){const tot=items.reduce((a,i)=>a+i.ar,0),rows=[];let c=[],acc=0,k=1;
+ items.forEach(it=>{c.push(it);acc+=it.ar;if(acc>=tot*k/r-1e-6&&rows.length<r-1){rows.push(c);c=[];k++}});
+ if(c.length)rows.push(c);return rows}
+function best(list,W,H,g){let b=null;
+ for(let r=1;r<=list.length;r++){const rows=split(list,r);
+  const hs=rows.map(row=>(W-g*(row.length-1))/row.reduce((a,i)=>a+i.ar,0));
+  const tot=hs.reduce((a,x)=>a+x,0)+g*(rows.length-1),sc=Math.min(1,H/tot);
+  const area=rows.reduce((a,row,i)=>a+row.reduce((s,it)=>s+it.ar,0)*hs[i]*hs[i]*sc*sc,0);
+  if(!b||area>b.area)b={rows,hs:hs.map(x=>x*sc),area}}
+ return b}
+function render(){
+ const R=rooms[cur],n=pp(),list=R.items.slice(page*n,page*n+n);
+ wall.innerHTML='';
+ const W=wall.clientWidth*.92,H=wall.clientHeight*.9,g=26,b=best(list,W,H,g);
+ const tot=b.hs.reduce((a,x)=>a+x,0)+g*(b.rows.length-1);
+ let y=(wall.clientHeight-tot)/2,idx=0;
+ b.rows.forEach((row,ri)=>{const h=b.hs[ri],rw=row.reduce((a,i)=>a+i.ar*h,0)+g*(row.length-1);let x=(wall.clientWidth-rw)/2;
+  row.forEach(it=>{const w=it.ar*h,el=document.createElement('div');
+   el.className='panel';el.tabIndex=0;el.setAttribute('role','button');
+   el.style.cssText=`left:${x}px;top:${y}px;width:${w}px;height:${h}px;animation-delay:${idx*70}ms;--r:${((idx*37)%5-2)*.9}deg`;
+   const bg=pal[(R.items.indexOf(it))%8];
+   el.innerHTML=`<i class="clip"></i><div class="art" style="background:${bg}"></div><div class="lab"><em>${it.tag}</em>${it.t}</div>`;
+   const open=()=>openP(el,it,bg);el.onclick=open;el.onkeydown=e=>{if(e.key==='Enter')open()};
+   wall.appendChild(el);x+=w+g;idx++});y+=h+g});
+ $('#rt').textContent=R.n;const np=pages();
+ $('.pager').hidden=np<2;$('#pg').textContent=`${page+1} / ${np}`;
+ $('#prev').disabled=page===0;$('#next').disabled=page>=np-1}
+function turn(d){const np=page+d;if(busy||np<0||np>=pages())return;busy=1;
+ [...wall.children].forEach((e,i)=>{e.style.transitionDelay=i*60+'ms';e.style.setProperty('--dx',d*(110+i*20)+'vw');e.style.setProperty('--rot',d*(18+i*9)+'deg');e.classList.add('out')});
+ setTimeout(()=>{page=np;render();busy=0},950)}
+function show(k){cur=k;page=0;const r=rooms[k];document.body.dataset.room=r.k;
+ $('#hall').hidden=true;$('#room').hidden=false;render();if(location.hash!=='#'+k)location.hash=k}
+function hall(){cur=null;document.body.dataset.room='hall';$('#room').hidden=true;$('#hall').hidden=false;if(location.hash)history.replaceState(null,'',location.pathname+location.search)}
+function openP(el,p,bg){const r=el.getBoundingClientRect(),f=document.createElement('div');
+ f.className='zoom';f.style.cssText=`left:${r.left}px;top:${r.top}px;width:${r.width}px;height:${r.height}px;background:${bg}`;
+ document.body.appendChild(f);f.offsetWidth;f.classList.add('go');
+ setTimeout(()=>{const s=document.createElement('div');s.className='sheet';
+  s.innerHTML=`<div><em>${p.tag} · ${p.y}</em><h3>${p.t}</h3><p>${p.d}</p></div><dl><dt>Año</dt><dd>${p.y}</dd><dt>Categoría</dt><dd>${p.tag}</dd><dt>Software</dt><dd>Affinity · AutoCAD · Twinmotion</dd><dt>Estado</dt><dd>Texto de ejemplo</dd></dl>`;
+  const x=document.createElement('button');x.className='x';x.textContent='✕ Cerrar';x.onclick=close;
+  f.append(s,x);f.offsetWidth;s.classList.add('on')},520);
+ function close(){document.removeEventListener('keydown',esc);f.querySelector('.sheet')?.remove();x_?.remove;
+  const r2=el.getBoundingClientRect();f.style.left=r2.left+'px';f.style.top=r2.top+'px';f.style.width=r2.width+'px';f.style.height=r2.height+'px';
+  f.classList.remove('go');setTimeout(()=>f.remove(),580)}
+ const x_=null,esc=e=>{if(e.key==='Escape')close()};document.addEventListener('keydown',esc)}
+$('#doors').onclick=e=>{const d=e.target.closest('.door');if(d)show(d.dataset.k)};
+$('#back').onclick=hall;$('#prev').onclick=()=>turn(-1);$('#next').onclick=()=>turn(1);
+addEventListener('pointermove',e=>{document.body.style.setProperty('--mx',e.clientX+'px');document.body.style.setProperty('--my',e.clientY+'px')});
+addEventListener('resize',()=>{if(cur&&!busy){page=Math.min(page,pages()-1);render()}});
+addEventListener('hashchange',()=>{const k=location.hash.slice(1);if(rooms[k]&&k!==cur)show(k);else if(!k&&cur)hall()});
+const h0=location.hash.slice(1);if(rooms[h0])show(h0);
+</script>
+</body>
+</html>
