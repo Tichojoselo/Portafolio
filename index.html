@@ -179,7 +179,7 @@ const b=svg.querySelector('.b[data-k="'+k+'"]'),r=b.getBoundingClientRect();
 stage.style.transformOrigin=(r.left+r.width/2)+'px '+(r.top+r.height/2)+'px';
 stage.style.setProperty('--z',Math.min(9,Math.max(3,innerWidth*.6/r.width)));
 set(k);stage.classList.add('zoom');
-if(k==='perfil'){setTimeout(()=>{location.href='perfil.html'},900);return}
+if(k==='perfil'){setTimeout(()=>{location.href='CV.html'},900);return}
 document.getElementById('rt').textContent=INFO[k][0];document.getElementById('rp').textContent=INFO[k][1];
 setTimeout(()=>{room.classList.add('open');document.getElementById('back').focus()},750);}
 function leave(){room.classList.remove('open');stage.classList.remove('zoom');setTimeout(()=>set(null),400)}
