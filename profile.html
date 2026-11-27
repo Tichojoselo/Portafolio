@@ -28,40 +28,16 @@ ul.plain li{display:flex;justify-content:space-between;gap:16px;border-bottom:1p
 ul.plain span{color:var(--mute)}
 aside{position:sticky;top:calc(28px + env(safe-area-inset-top,0px));align-self:start}
 figure{margin:0}
-.frame{border:1.4px solid var(--ink);background:#efece3;aspect-ratio:3/4;display:block;width:100%}
+.frame{border:1.4px solid var(--ink);background:#efece3;aspect-ratio:3/4;display:block;width:100%;object-fit:contain;object-position:center}
 figcaption{margin-top:10px;color:var(--mute);font-size:15px;display:flex;gap:10px;align-items:center}
 figcaption i{width:9px;height:9px;border-radius:50%;background:var(--lamp);border:1px solid var(--ink);flex:none}
-/* Pantallas estrechas / composición vertical */
 @media (max-width:860px){
-  .wrap{
-    display:block;
-    max-width:720px;
-    padding:24px clamp(18px,5vw,32px) max(44svh,360px);
-  }
+  .wrap{display:block;max-width:720px;padding:24px clamp(18px,5vw,32px) max(44svh,360px)}
   main{position:relative;z-index:1}
   section{grid-template-columns:1fr;gap:4px 0}
-  aside{
-    position:fixed;
-    z-index:3;
-    right:max(0px,env(safe-area-inset-right,0px));
-    bottom:0;
-    top:auto;
-    width:min(54vw,280px);
-    max-width:none;
-    align-self:auto;
-    pointer-events:none;
-  }
+  aside{position:fixed;z-index:3;right:max(0px,env(safe-area-inset-right,0px));bottom:0;top:auto;width:min(54vw,280px);max-width:none;align-self:auto;pointer-events:none}
   figure{margin:0}
-  .frame{
-    display:block;
-    width:100%;
-    height:min(43svh,360px);
-    aspect-ratio:auto;
-    object-fit:contain;
-    object-position:right bottom;
-    border:0;
-    background:transparent;
-  }
+  .frame{display:block;width:100%;height:min(43svh,360px);aspect-ratio:auto;object-fit:contain;object-position:right bottom;border:0;background:transparent}
   figcaption{display:none}
 }
 @media (max-width:420px){
@@ -81,35 +57,28 @@ figcaption i{width:9px;height:9px;border-radius:50%;background:var(--lamp);borde
 <h1>José Miguel Medina Quequesana</h1>
 <p class="role">Arquitectura y diseño. Estudiante de Arquitectura en la UPC, en etapa de tesis. Lima, Perú.</p>
 <p class="lead">Me interesa una arquitectura austera, sencilla y con identidad propia, que mezcle forma y habitabilidad en edificios utilitarios. Me apasionan el brutalismo, la cultura y el diálogo entre lo construido y el entorno natural. Trabajo con calma, también bajo presión.</p>
-
 <section><h2>Busco</h2><div><p>Prácticas preprofesionales en arquitectura y diseño, con disposición para aprender rápido herramientas y equipos nuevos.</p></div></section>
-
 <section><h2>Formación</h2><div>
 <div class="item"><h3>Arquitectura, Universidad Peruana de Ciencias Aplicadas (UPC)</h3><p class="when">Ingreso en 2019. Egreso previsto en 2027, con la tesis pendiente.</p></div>
 <div class="item"><h3>Colegio Nuestra Señora del Pilar</h3><p class="when">Egreso en 2015. Bachillerato Internacional, 2014–2015.</p></div>
 </div></section>
-
 <section><h2>Proyecto destacado</h2><div class="item">
 <h3>Hotel de cuatro estrellas frente a Larcomar</h3>
 <p class="when">Proyecto académico individual, Miraflores, Lima.</p>
 <p>Un hotel pensado como edificio sólido y pesado, de lógica estereotómica, que se planta frente a las fachadas de vidrio de su entorno como un contrapunto. A pesar de su peso, conserva la calidez y el carácter hogareño que un hotel necesita.</p>
 <p class="when">AutoCAD, Revit, SketchUp, Blender y Affinity.</p>
 </div></section>
-
 <section><h2>Programas</h2><ul class="plain">
 <li>Affinity<span>avanzado</span></li><li>Adobe<span>intermedio</span></li><li>AutoCAD<span>intermedio</span></li>
 <li>Blender y Twinmotion<span>básico a intermedio</span></li><li>SketchUp<span>básico</span></li><li>Revit<span>básico</span></li>
 </ul></section>
-
 <section><h2>Cursos</h2><div>
 <div class="item"><h3>Diseño de Interiores para Espacios Residenciales</h3><p class="when">MALI, 260 horas, agosto de 2024.</p></div>
 <div class="item"><h3>Modern and Contemporary Art and Design</h3><p class="when">MoMA, especialización en Coursera, junio de 2022.</p></div>
 <div class="item"><h3>Historia del Arte: del Arte Prehistórico al Renacimiento</h3><p class="when">Universidad de Palermo, junio de 2023.</p></div>
 <div class="item"><h3>Urban Landscapes of Care: ciudades amigables con la infancia</h3><p class="when">UPC, marzo de 2026.</p></div>
 </div></section>
-
 <section><h2>Idiomas</h2><ul class="plain"><li>Español<span>nativo</span></li><li>Inglés<span>avanzado</span></li></ul></section>
-
 <section><h2>Contacto</h2><ul class="plain">
 <li>Correo<a href="mailto:joselommq22@gmail.com">joselommq22@gmail.com</a></li>
 <li>Teléfono<a href="tel:+51982132682">+51 982 132 682</a></li>
@@ -117,16 +86,10 @@ figcaption i{width:9px;height:9px;border-radius:50%;background:var(--lamp);borde
 <li>Instagram<a href="https://www.instagram.com/tichojoselo22" rel="noopener">@tichojoselo22</a></li>
 </ul></section>
 </main>
-
 <aside>
 <figure>
-<!-- Cuando tengas el PNG, reemplaza el SVG por:
-<img class="frame" src="img/foto.png" alt="José Miguel Medina">
--->
-<img class="frame" src="img/profile/portrait1.png" alt="José Miguel Medina">
-<g fill="#cfd5d2" stroke="#1f2a2e" stroke-width="1.4"><circle cx="150" cy="160" r="62"/><path d="M36 400C36 300 92 258 150 258S264 300 264 400Z"/></g>
-</svg>
-<figcaption><i></i>Aquí irá mi foto</figcaption>
+<img class="frame" src="img/profile/portrait1.png" alt="Retrato en blanco y negro de José Miguel Medina">
+<figcaption><i></i>José Miguel Medina</figcaption>
 </figure>
 </aside>
 </div>
