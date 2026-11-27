@@ -36,8 +36,8 @@ figcaption{display:none}
   .wrap{display:block;max-width:720px;padding:24px clamp(18px,5vw,32px) max(44svh,360px)}
   main{position:relative;z-index:1}
   section{grid-template-columns:1fr;gap:4px 0}
-  aside{position:fixed;z-index:2;right:0;bottom:0;top:0;width:100vw;height:100svh;max-width:none;align-self:auto;pointer-events:none}
-  figure{margin:0}
+  aside{position:fixed;z-index:2;right:0;bottom:0;top:auto;width:100vw;height:48svh;max-width:none;align-self:auto;pointer-events:none}
+  figure,picture{display:block;margin:0;width:100%;height:100%}
   .frame{display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:contain;object-position:right bottom;border:0;background:transparent}
   figcaption{display:none}
 }
@@ -45,7 +45,7 @@ figcaption{display:none}
   .wrap{padding-top:18px;padding-left:18px;padding-right:18px}
   h1{font-size:clamp(42px,12vw,58px)}
   .lead{margin-bottom:38px}
-  aside{width:100vw}
+  aside{width:100vw;height:48svh}
   .frame{height:100%}
 }
 @media (prefers-reduced-motion:reduce){body{animation:none}}
@@ -89,7 +89,10 @@ figcaption{display:none}
 </main>
 <aside>
 <figure>
+<picture>
+<source media="(max-width: 860px)" srcset="img/profile/portrait-mobile.png">
 <img class="frame" src="img/profile/portrait1.png" alt="Retrato en blanco y negro de José Miguel Medina">
+</picture>
 <figcaption><i></i>José Miguel Medina</figcaption>
 </figure>
 </aside>
